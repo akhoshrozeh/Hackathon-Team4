@@ -45,7 +45,7 @@ app.initialize = function() //handles intializing our device
  
 function scanSuccess(device)
 {
-    if(device.name != null) //if our bluetooth name has been established...
+    if(device.name == 'HMSoft' && device.address == '29CC2845-E4AD-CD62-BAC3-CSC4E4E1F63D') //if our bluetooth name has been established...
     {
         console.log('Found' + device.name); //print in the console "Found (device name)"
         device.connect(connectSuccess, connectFailure); //accessing the connect variable in object device, checking connectSuccess and connectFailure
