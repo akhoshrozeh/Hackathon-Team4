@@ -103,7 +103,12 @@ void setup() {
 
 
 void loop() {
-  
+  turnStepper1_right();
+  turnStepper2_right();
+  delay(1000);
+  turnStepper1_left();
+  turnStepper2_left();
+  delay(1000);
   
 
    
