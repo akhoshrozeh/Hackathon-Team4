@@ -54,6 +54,7 @@ function scanSuccess(device)
     }
 }
 //git merge
+//hk
  
 function scanFailure(errorCode)
 {
