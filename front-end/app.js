@@ -53,6 +53,7 @@ function scanSuccess(device)
         evothings.easyble.stopScan(); //evothings specific command, stopScan, stops scanning for devices.
     }
 }
+//git merge
  
 function scanFailure(errorCode)
 {
