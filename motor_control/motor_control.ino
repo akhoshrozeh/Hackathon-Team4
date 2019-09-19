@@ -103,6 +103,11 @@ void setup() {
 
 
 void loop() {
+<<<<<<< HEAD
+  //Testing work;
+  
+=======
+>>>>>>> 42c970486c6c3b01b213b5d066ea27aa9ebca30d
 
    
 }
