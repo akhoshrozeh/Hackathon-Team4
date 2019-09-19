@@ -90,9 +90,8 @@ void turnStepper2_right() {
 }
 
 
-
+// *** SETUP ***
 void setup() {
-  // nothing to do inside the setup
     bigServo.attach(BIG_SERVO_PIN);
     bigServo.write(0);
     smallServo.attach(SMALL_SERVO_PIN);
@@ -102,14 +101,8 @@ void setup() {
 }
 
 
+
 void loop() {
-  turnStepper1_right();
-  turnStepper2_right();
-  delay(1000);
-  turnStepper1_left();
-  turnStepper2_left();
-  delay(1000);
-  
 
    
 }
