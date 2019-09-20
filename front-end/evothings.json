@@ -1,0 +1,23 @@
+{
+  "name": "transfer-bridge-skeleton",
+  "version": "1.0.0",
+  "title": "Mina-mal Effort App",
+  "description": "Base skeleton for the hackathon.",
+  "tags": [],
+  "libraries": [
+    {
+      "name": "jquery",
+      "version": "2.1.1"
+    }
+  ],
+  "plugins": [],
+  "index-file": "index.html",
+  "uuid": "38336311-3b04-4a0e-9149-487357d3fa92",
+  "icon": "app-icon.png",
+  "doc-url": "",
+  "long-description": "Blackboxed HTML/CSS and JS for the Transfer Bridge hackathon.",
+  "cordova-id": "com.evothings.examples.templatebasicapp",
+  "author-name": "Evothings",
+  "author-email": "build@evothings.com",
+  "author-url": "https://evothings.com"
+}

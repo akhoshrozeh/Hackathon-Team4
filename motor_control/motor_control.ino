@@ -93,15 +93,14 @@ void turnStepper2_right() {
 }
 
 
-
-
    
+
+
+    
+
 // *** SETUP ***
 void setup() {
-
-    Serial.begin(9600);
-    HM10.begin(9600);
-    
+  
     bigServo.attach(BIG_SERVO_PIN);
     bigServo.write(0);
     smallServo.attach(SMALL_SERVO_PIN);
@@ -110,6 +109,8 @@ void setup() {
     myStepper_2.setSpeed(rolePerMinute);
 
    
+    Serial.begin(9600);
+    HM10.begin(9600);
    // pinMode(0, INPUT);
    // pinMode(1, OUTPUT);
     
@@ -126,7 +127,9 @@ void setup() {
 // Arm Left - 7
 // Arm Right - 8
 
+
 void loop() {
+
     HM10.listen();
     while(HM10.available() > 0) {
       byte data = HM10.read();
@@ -154,5 +157,6 @@ void loop() {
           
     
     }
+
    
 }
