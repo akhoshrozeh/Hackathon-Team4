@@ -21,12 +21,14 @@ Stepper myStepper_2(stepsPerRevolution, 2, 4, 3, 5);
 Servo bigServo_1;
 Servo bigServo_2;
 Servo smallServo_1;
-Servo smallServo_2
+Servo smallServo_2;
 SoftwareSerial HM10 = SoftwareSerial(0, 1);
 
 // *** VARIABLES ***
-int bigServoPos = 90;
-int smallServoPos = 90;
+int bigServo1Pos = 90;
+int bigServo2Pos = 90;
+int smallServo1Pos = 90;
+int smallServo2Pos = 90;
 int pos = 0;
 int stepCount = 0;  // number of steps the motor has taken
 
@@ -66,8 +68,8 @@ void turnBigServo1Left() {
   if(bigServo_1.read() == 0)
     return;
   else{
-    bigServoPos -= 10;
-    bigServo.write(bigServoPos);
+    bigServo1Pos -= 10;
+    bigServo_1.write(bigServo1Pos);
     }
     
 }
@@ -77,55 +79,48 @@ void turnBigServo1Right() {
     return;
     
   else{
-    bigServoPos += 10;
-    bigServo.write(bigServoPos);
+    bigServo1Pos += 10;
+    bigServo_1.write(bigServo1Pos);
   }
   
 }
 
-// **SMALL SERVO**
-void turnSmallServoLeft() {
-  if(smallServo.read() == 0)
+void turnBigServo2Left() {
+  if(bigServo_2.read() == 0)
     return;
   else{
-    smallServoPos -= 10;
-    smallServo.write(smallServoPos);
+    bigServo2Pos -= 10;
+    bigServo_2.write(bigServo2Pos);
     }
     
 }
   
-void turnSmallServoRight() {
-  if(smallServo.read() == 180)
+void turnBigServo2Right() {
+  if(bigServo_2.read() == 180)
     return;
     
   else{
-    smallServoPos += 10;
-    smallServo.write(smallServoPos);
+    bigServo2Pos += 10;
+    bigServo_2.write(bigServo2Pos);
   }
+  
+}
+
+// **SMALL SERVOS**  // THE CLAW
+void openSmallServos() {
+  
+    
+}
+  
+void closeSmallServos() {
+  
   
 }
 
 
 // Steppers are now going be working synchronized!
-// **STEPPER_1**
-//void turnStepper1_left() {
-//  myStepper_1.step(-stepsPerRevolution);   
-//}
-//
-//void turnStepper1_right() {
-//  myStepper_1.step(stepsPerRevolution);
-//}
-//
-//// **STEPPER_2**
-//void turnStepper2_left() {
-//  myStepper_2.step(-stepsPerRevolution);
-//}
-//
-//void turnStepper2_right() {
-//  myStepper_2.step(stepsPerRevolution);
-//}
 
-// **STEPPER**
+// **STEPPERS**
 void turnSteppersLeft(){
   myStepper_1.step(-stepsPerRevolution);
   myStepper_2.step(-stepsPerRevolution);
@@ -137,15 +132,15 @@ void turnSteppersRight(){
   }
 
 
-// GUIDE FOR INPUT 
-// Steppers Right - 1
-// Steppers Left - 2
-// Elbow Up - 3
-// Elbow Down - 4
-// Wrist CCW - 5
-// Wrist CW - 6
-// Arm Left - 7
-// Arm Right - 8
+// ***GUIDE FOR INPUT (START/STOP)***
+  // Steppers Left - 1/9 
+  // Steppers Right - 2/10
+  // Big Servo1 Left - 3/11
+  // Big Servo1 Right - 4/12
+  // Big Servo2 Left - 5/13
+  // Big Servo2 Right - 6/14
+  // Open Small Servos - 7/15
+  // Close Small Servos - 8/0
 
 
 void loop() {
@@ -172,7 +167,7 @@ void loop() {
       else if(data == 3){
          while(1){
             if(HM10.read() == 11) break;
-            else turnStepper2_left;
+            else turnBigServo1Left();
           }
       }
 
@@ -181,7 +176,7 @@ void loop() {
       else if(data == 4){
         while(1){
           if(HM10.read() == 12) break;
-          else turnStepper2_right();
+          else turnBigServo1Right();
           }
         }
    
@@ -189,7 +184,7 @@ void loop() {
       else if(data == 5){
         while(1){
           if(HM10.read() == 13) break;
-          else turnSmallServoLeft();
+          else turnBigServo2Left();
           }
         }
           
@@ -198,7 +193,7 @@ void loop() {
       else if(data == 6){
         while(1){
           if(HM10.read() == 14) break;
-          else turnSmallServoRight();
+          else turnBigServo2Right();
           }
         }
           
@@ -207,7 +202,7 @@ void loop() {
       else if(data == 7){
         while(1){
           if(HM10.read() == 15) break;
-          else turnBigServoLeft();
+          else openSmallServos();
           }
         }
        
@@ -216,7 +211,7 @@ void loop() {
       else if(data == 8){
         while(1){
           if(HM10.read() == 0) break;
-          else turnSmallServoRight();
+          else closeSmallServos();
           }
         }
 
