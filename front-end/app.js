@@ -142,3 +142,12 @@ app.recievedData() = function(data)
         //vibrate the phone, change the color of button, ...
     }
 }
+
+let textBox = document.getElementById('clicks')
+textBox.addEventListener('ontouchstart', function(event)
+{
+    while (data == [1])
+    {
+        app.sendData([1]);
+    }
+});
