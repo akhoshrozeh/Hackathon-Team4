@@ -5,7 +5,7 @@
 // *** CONSTANTS ***
 const int BIG_SERVO_PIN = 9;
 const int SMALL_SERVO_PIN = 6; 
-const int stepsPerRevolution = 200;  // change this to fit the number of steps per revolution for motor
+const int stepsPerRevolution = 300;  // change this to fit the number of steps per revolution for motor
 const int rolePerMinute = 15;
 
 
@@ -25,7 +25,7 @@ int stepCount = 0;  // number of steps the motor has taken
 
 
 
-// ***FUNCTIONS***
+// ***FUNCTIONS***-------------------------------------------------------------
 
 // **BIG SERVO**
 void turnBigServoLeft() {
@@ -71,7 +71,7 @@ void turnSmallServoRight() {
   
 }
 
-// **STEPPER_1**
+// **STEPPER_1**---------------------------------------------------------------
 void turnStepper1_left() {
   myStepper_1.step(-stepsPerRevolution);
 }
@@ -90,24 +90,27 @@ void turnStepper2_right() {
 }
 
 
-// *** SETUP ***
+// *** SETUP ***-------------------------------------------------------------------------------------------------
 void setup() {
     bigServo.attach(BIG_SERVO_PIN);
-    bigServo.write(0);
+    bigServo.write(12);
     smallServo.attach(SMALL_SERVO_PIN);
-    smallServo.write(0);
+    smallServo.write(12);
     myStepper_1.setSpeed(rolePerMinute);
     myStepper_2.setSpeed(rolePerMinute);
 }
 
 
-
+//---------------------------------------------------------------------------------------------------------------------
 void loop() {
-<<<<<<< HEAD
-  //Testing work;
-  
-=======
->>>>>>> 42c970486c6c3b01b213b5d066ea27aa9ebca30d
-
-   
+turnStepper1_left();
+turnStepper2_left();
+turnBigServoRight();
+turnSmallServoRight();
+delay(10);
+turnStepper1_right();
+turnStepper2_right();
+turnBigServoLeft();
+turnSmallServoLeft();
+delay(10);
 }
