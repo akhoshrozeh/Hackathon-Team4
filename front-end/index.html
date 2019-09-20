@@ -44,7 +44,7 @@
 		<h2 style="text-align:center">Mina-mal Effort App</h2>
 		<img class="center" style="width:50%" src="./ui/images/walle.png" alt="robot arm" id='wall-e-img'>
 	
-		<button class="button green" id='start-scan' style='width: 100%;' onclick="app.showControls()"> Start </button>
+		<button class="button green" id='start-scan' style='width: 100%;' onclick="app.showControls(); app.connect();"> Start </button>
 	</div>
 
 	<!-- CONTROL PANEL -->
@@ -55,11 +55,11 @@
 			<div class='data'></div>
 
 			<div class='button'>
-				<img class = 'click' src = "res/up.png"/>
+				<img class = 'click' ontouchstart = "app.sendData([1])" src = "res/up.png"/>
 			</div>
 
 			<div class='button'>
-				<img class = 'click' src = "res/down.png"/>
+				<img class = 'click' ontouchstart = "app.sendData([2])" src = "res/down.png"/>
 			</div> 
 		</div>
 
@@ -68,11 +68,11 @@
 			<div class='data'></div>
 
 			<div class='button'>
-				<img class = 'click' src = "res/up.png"/>
+				<img class = 'click' ontouchstart = "app.sendData([3])" src = "res/up.png"/>
 			</div>
 
 			<div class='button'>
-				<img class = 'click' src = "res/down.png"/>
+				<img class = 'click' ontouchstart = "app.sendData([4])" src = "res/down.png"/>
 			</div>
 		</div>
 
@@ -84,11 +84,11 @@
 				</div>
 				<div class='horizontal'>
 					<div class='button'>
-						<img class = 'click' src = "res/counter-clockwise.png"/>
+						<img class = 'click' ontouchstart = "app.sendData([5])" src = "res/counter-clockwise.png"/>
 					</div>
 			
 					<div class='button'>
-						<img class = 'click' src = "res/clockwise.png"/>
+						<img class = 'click' ontouchstart = "app.sendData([6])" src = "res/clockwise.png"/>
 					</div>
 				</div>
 			</div>
@@ -100,11 +100,11 @@
 				</div>
 				<div class='horizontal'>
 					<div class='button'>
-						<img class = 'click' src = "res/left.png"/>
+						<img class = 'click' ontouchstart = "app.sendData([7])" src = "res/left.png"/>
 					</div>
 			
 					<div class='button'>
-						<img class = 'click' src = "res/right.png"/>
+						<img class = 'click' ontouchstart = "app.sendData([8])" src = "res/right.png"/>
 					</div>
 				</div>
 			</div>
