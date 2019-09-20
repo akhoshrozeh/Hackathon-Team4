@@ -110,6 +110,7 @@ function serviceFailure(errorCode)
     console.log('Failed to read services' + errorCode);
     app.disconnect();
 }
+
 app.sendData = function(data)
 {
     if (app.connected && app.device != null)
