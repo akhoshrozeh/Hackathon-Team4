@@ -93,16 +93,16 @@ void turnStepper2_right() {
 }
 
 
-<<<<<<< HEAD
+
 // *** SETUP ***-------------------------------------------------------------------------------------------------
-=======
+
    
 
 
     
 
 // *** SETUP ***
->>>>>>> origin
+
 void setup() {
   
     bigServo.attach(BIG_SERVO_PIN);
@@ -133,18 +133,18 @@ void setup() {
 
 //---------------------------------------------------------------------------------------------------------------------
 void loop() {
-<<<<<<< HEAD
-turnStepper1_left();
-turnStepper2_left();
-turnBigServoRight();
-turnSmallServoRight();
-delay(10);
-turnStepper1_right();
-turnStepper2_right();
-turnBigServoLeft();
-turnSmallServoLeft();
-delay(10);
-=======
+//
+//turnStepper1_left();
+//turnStepper2_left();
+//turnBigServoRight();
+//turnSmallServoRight();
+//delay(10);
+//turnStepper1_right();
+//turnStepper2_right();
+//turnBigServoLeft();
+//turnSmallServoLeft();
+//delay(10);
+
 
     HM10.listen();
     while(HM10.available() > 0) {
@@ -174,6 +174,5 @@ delay(10);
     
     }
 
-   
->>>>>>> origin
+
 }
