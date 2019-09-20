@@ -1,5 +1,7 @@
 #include <Stepper.h>
 #include <Servo.h>
+#include <SoftwareSerial.h>
+
 
 
 // *** CONSTANTS ***
@@ -90,26 +92,45 @@ void turnStepper2_right() {
 }
 
 
-
+// *** SETUP ***
 void setup() {
-  // nothing to do inside the setup
     bigServo.attach(BIG_SERVO_PIN);
     bigServo.write(0);
     smallServo.attach(SMALL_SERVO_PIN);
     smallServo.write(0);
     myStepper_1.setSpeed(rolePerMinute);
     myStepper_2.setSpeed(rolePerMinute);
+
+    Serial.begin(9600);
+    SoftwareSerial HM10 (0,1);  
+    HM10.begin(9600);
 }
 
+// GUIDE FOR INPUT 
+// Hand Up - 1
+// Hand Down - 2
+// Elbow Up - 3
+// Elbow Down - 4
+// Wrist CCW - 5
+// Wrist CW - 6
+// Arm Left - 7
+// Arm Right - 8
 
 void loop() {
-  turnStepper1_right();
-  turnStepper2_right();
-  delay(1000);
-  turnStepper1_left();
-  turnStepper2_left();
-  delay(1000);
-  
+    HM10.listen();
+    while(HM10.available) {
+      byte data = HM10.read();
 
+      if(data == 1)
+          Serial.println("hand up");
+      else if(data == 2)
+          Serial.println("hand down");
+
+
+      
+      
+    
+    
+    }
    
 }
