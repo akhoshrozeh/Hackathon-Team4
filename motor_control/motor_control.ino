@@ -27,6 +27,22 @@ int pos = 0;
 int stepCount = 0;  // number of steps the motor has taken
 
 
+// *** SETUP ***
+void setup() {
+  
+    bigServo.attach(BIG_SERVO_PIN);
+    bigServo.write(90);
+    smallServo.attach(SMALL_SERVO_PIN);
+    smallServo.write(90);
+    myStepper_1.setSpeed(rolePerMinute);
+    myStepper_2.setSpeed(rolePerMinute);
+
+   
+    Serial.begin(9600);
+    HM10.begin(9600);
+    
+}
+
 
 // ***FUNCTIONS***
 
@@ -76,7 +92,14 @@ void turnSmallServoRight() {
 
 // **STEPPER_1**
 void turnStepper1_left() {
-  myStepper_1.step(-stepsPerRevolution);
+  //myStepper_1.step(-stepsPerRevolution);
+  byte temp = HM10.read();
+  if(temp == 9) return;
+  
+  Serial.println("hand up");
+  turnStepper1_left();
+  return;
+    
 }
 
 void turnStepper1_right() {
@@ -94,28 +117,9 @@ void turnStepper2_right() {
 
 
    
-
-
     
 
-// *** SETUP ***
-void setup() {
-  
-    bigServo.attach(BIG_SERVO_PIN);
-    bigServo.write(0);
-    smallServo.attach(SMALL_SERVO_PIN);
-    smallServo.write(0);
-    myStepper_1.setSpeed(rolePerMinute);
-    myStepper_2.setSpeed(rolePerMinute);
 
-   
-    Serial.begin(9600);
-    HM10.begin(9600);
-   // pinMode(0, INPUT);
-   // pinMode(1, OUTPUT);
-    
-    
-}
 
 // GUIDE FOR INPUT 
 // Hand Up - 1
@@ -135,21 +139,29 @@ void loop() {
       byte data = HM10.read();
 
       if(data == 1)
-          Serial.println("hand up");
+          turnStepper1_left();
+          //Serial.println("hand up");
       else if(data == 2)
+          //turnStepper1_right();
           Serial.println("hand down");
       else if(data == 3)
+          //turnStepper2_left();
           Serial.println("elbow up");
       else if(data == 4)
+          //turnStepper2_right();
           Serial.println("elbow down");
       else if(data == 5)
-          Serial.println("wrist ccw");
+          turnSmallServoLeft();
+          //Serial.println("wrist ccw");
       else if(data == 6)
-          Serial.println("wrist cw");
+          turnSmallServoRight();
+      //    Serial.println("wrist cw");
       else if(data == 7)
-          Serial.println("arm left");
+          turnBigServoLeft();
+       //   Serial.println("arm left");
       else if(data == 8)
-          Serial.println("arm right");
+          turnBigServoRight();
+          //Serial.println("arm right");
 
        else {
         // do nothing 
