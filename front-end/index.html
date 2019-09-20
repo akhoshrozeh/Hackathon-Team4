@@ -27,7 +27,7 @@
 			<img src="res/left.png" />
 		</button>
 
-		<button id='disconnect' class="red small" onclick="app.disconnect()" disabled>Disconnect</button>
+		<button id='disconnect' class="red small" onclick="app.disconnect(); app.showStart();" disabled>Disconnect</button>
 
 		<img class="logotype" src="ui/images/logo.png" alt="Evothings" />
 	</header>
@@ -40,7 +40,7 @@
 	<script src="libs/evothings/easyble/easyble.js"></script>
 
 	<!-- START VIEW -->
-	<div id="startView">
+	<div id="startView" style="background-color: rgb(192,192,192); border-radius: 10%;" >
 		<h2 style="text-align:center">Mina-mal Effort App</h2>
 		<img class="center" style="width:50%" src="./ui/images/walle.png" alt="robot arm" id='wall-e-img'>
 	
@@ -55,11 +55,15 @@
 			<div class='data'></div>
 
 			<div class='button'>
-				<img class = 'click' ontouchstart = "app.sendData([1])" src = "res/up.png"/>
+				<img class = 'click' 
+					 id = 'up' 
+					 ontouchstart = "app.sendData([1])" src = "res/up.png"/>
 			</div>
 
 			<div class='button'>
-				<img class = 'click' ontouchstart = "app.sendData([2])" src = "res/down.png"/>
+				<img class = 'click' 
+					 id = 'down'
+					 ontouchstart = "app.sendData([2])" src = "res/down.png"/>
 			</div> 
 		</div>
 
@@ -68,11 +72,15 @@
 			<div class='data'></div>
 
 			<div class='button'>
-				<img class = 'click' ontouchstart = "app.sendData([3])" src = "res/up.png"/>
+				<img class = 'click' 
+					 id = 'upp'
+					 ontouchstart = "app.sendData([3])" src = "res/up.png"/>
 			</div>
 
 			<div class='button'>
-				<img class = 'click' ontouchstart = "app.sendData([4])" src = "res/down.png"/>
+				<img class = 'click' 
+					 id='downn'
+					 ontouchstart = "app.sendData([4])" src = "res/down.png"/>
 			</div>
 		</div>
 
@@ -84,11 +92,15 @@
 				</div>
 				<div class='horizontal'>
 					<div class='button'>
-						<img class = 'click' ontouchstart = "app.sendData([5])" src = "res/counter-clockwise.png"/>
+						<img class = 'click' 
+							 id='ccw'
+							 ontouchstart = "app.sendData([5])" src = "res/counter-clockwise.png"/>
 					</div>
 			
 					<div class='button'>
-						<img class = 'click' ontouchstart = "app.sendData([6])" src = "res/clockwise.png"/>
+						<img class = 'click' 
+							 id='cw'
+							 ontouchstart = "app.sendData([6])" src = "res/clockwise.png"/>
 					</div>
 				</div>
 			</div>
@@ -100,11 +112,15 @@
 				</div>
 				<div class='horizontal'>
 					<div class='button'>
-						<img class = 'click' ontouchstart = "app.sendData([7])" src = "res/left.png"/>
+						<img class = 'click' 
+							 id='left'
+							 ontouchstart = "app.sendData([7])" src = "res/left.png"/>
 					</div>
 			
 					<div class='button'>
-						<img class = 'click' ontouchstart = "app.sendData([8])" src = "res/right.png"/>
+						<img class = 'click'
+							 id='right'
+							 ontouchstart = "app.sendData([8])" src = "res/right.png"/>
 					</div>
 				</div>
 			</div>

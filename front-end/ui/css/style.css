@@ -1,11 +1,11 @@
 @import '../fonts/ProximaNova.css';
 
 body {
-	background-color: white;
+	background-color: rgb(65, 105, 225);
 	color: black;
 }
-
 .button-group {
+	background-color: rgb(255,215,0);
 	display: flex;
   	width: 100%;
   	flex-wrap: wrap;
@@ -303,6 +303,7 @@ input.btn-group.green:active + label,
 input.btn-group:checked + label.green,
 input.btn-group.green:checked + label {
 	background-color: #3aca9c;
+	
 }
 
 /*  Color: "Blue Hue"
