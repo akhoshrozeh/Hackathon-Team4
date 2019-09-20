@@ -1,11 +1,11 @@
 @import '../fonts/ProximaNova.css';
 
 body {
-	background-color: white;
+	background-color: rgb(65, 105, 225);
 	color: black;
 }
-
 .button-group {
+	background-color: rgb(255,215,10);
 	display: flex;
   	width: 100%;
   	flex-wrap: wrap;
@@ -14,7 +14,7 @@ body {
 	margin: 10px 0;
 	text-align: center;
 	padding: 8px;
-	border: 2px solid black;
+	border: 5px solid #800080;
 }
 
 .vertical {
@@ -36,6 +36,7 @@ body {
 	margin: 10px 0 5px 0;
 	text-align: center;
 	font-weight: bold;
+	font-size: 10vw;
 }
 
 #center .group-title {
@@ -102,7 +103,14 @@ body {
 #center {
 	padding: 0 10px;
 }
-
+#start-scan {
+	font-size: 3vh;	
+}
+#startView {
+	background-color: rgb(192,192,192);
+	border-radius: 10%;
+	border: 3px solid; 
+}
 /* LOADING VIEW */
 
 p.deviceAddress {
@@ -303,6 +311,7 @@ input.btn-group.green:active + label,
 input.btn-group:checked + label.green,
 input.btn-group.green:checked + label {
 	background-color: #3aca9c;
+	
 }
 
 /*  Color: "Blue Hue"
@@ -527,7 +536,7 @@ html {
 }
 html, body {
 	height: 100%;
-	font-family: sans-serif;
+	font-family: 'Courier New', Courier;
 	font-weight: normal;
 
 	-webkit-touch-callout: none;
