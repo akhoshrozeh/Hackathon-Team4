@@ -34,19 +34,19 @@ body {
 .group-title {
 	width: 100%;
 	margin: 10px 0 5px 0;
-	text-align: center;
+	text-align: -webkit-center;
 	font-weight: bold;
-	font-size: 10vw;
+	font-size: 5vw;
 }
 
 #center .group-title {
-	text-align: left;
+	text-align: -webkit-center;
 }
 
 .title-data-row {
 	display: flex;
 	flex-direction: row;
-	align-items: center;
+	align-items: ;
 	width: 90%;
 }
 
@@ -58,14 +58,14 @@ body {
 }
 
 .button {
-    display: inline-block;
+    display: block;
 	width: 7vh;
 	height: 7vh;
 	margin: 10px 0;
 	padding: 10px;
 	border: 2px solid blue;
 	border-radius: 100px;
-	background: black;
+	background-color: black;
 }
 .click {
 	width:100%;
@@ -104,12 +104,15 @@ body {
 	padding: 0 10px;
 }
 #start-scan {
-	font-size: 3vh;	
+	font-size: 3vh; 
 }
-#startView {
-	background-color: rgb(192,192,192);
+.startView {
+	background-color: rgb(255,215,30);
 	border-radius: 10%;
 	border: 3px solid; 
+	padding: 10px;
+	margin-top: 20px; 
+	margin-bottom: 60px;
 }
 /* LOADING VIEW */
 
@@ -536,7 +539,7 @@ html {
 }
 html, body {
 	height: 100%;
-	font-family: 'Courier New', Courier;
+	font-family: monospace;
 	font-weight: normal;
 
 	-webkit-touch-callout: none;
@@ -591,7 +594,7 @@ section::after {
 	.center-wrapper {
 		width: 40%;
 		height: 90vh;
-		margin: 10px 0;
+		margin: -16px 0;
 	}
 	#shoulder {
 		order: 1;

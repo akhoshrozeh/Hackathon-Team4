@@ -16,14 +16,14 @@ app.CHARACTERISTIC_UUID='0000ffe1-0000-1000-8000-00805f9b34fb'; //the Characteri
 app.showControls = function() //shows our controls menu for
 {
     $('#disconnect').prop('disabled', false);
-    $('#startView').hide();
+    $('.startView').hide();
     $('#controlsView').show();
 }
  
 app.showStart = function()
 {
     $('#disconnect').prop('disabled', true);
-    $('#startView').show();
+    $('.startView').show();
     $('#controlsView').hide();
 }
  
@@ -142,4 +142,69 @@ app.recievedData() = function(data)
     {
         //vibrate the phone, change the color of button, ...
     }
+}
+
+function upChangeColor() {
+    let myClick = document.getElementById('oC');
+    myClick.style.backgroundColor = "grey";
+}
+function upReturnColor(){
+    let myClick = document.getElementById('oC');
+    myClick.style.backgroundColor = 'black';
+}
+function downChangeColor() {
+    let myClick = document.getElementById('cC');
+    myClick.style.backgroundColor = "grey";
+}
+function downReturnColor(){
+    let myClick = document.getElementById('cC');
+    myClick.style.backgroundColor = 'black';
+}
+function uppChangeColor() {
+    let myClick = document.getElementById('up');
+    myClick.style.backgroundColor = "grey";
+}
+function uppReturnColor(){
+    let myClick = document.getElementById('up');
+    myClick.style.backgroundColor = 'black';
+}
+function downnChangeColor() {
+    let myClick = document.getElementById('down');
+    myClick.style.backgroundColor = "grey";
+}
+function downnReturnColor(){
+    let myClick = document.getElementById('down');
+    myClick.style.backgroundColor = 'black';
+}
+function ccwChangeColor() {
+    let myClick = document.getElementById('ccw');
+    myClick.style.backgroundColor = "grey";
+}
+function ccwReturnColor(){
+    let myClick = document.getElementById('ccw');
+    myClick.style.backgroundColor = 'black';
+}
+function cwChangeColor() {
+    let myClick = document.getElementById('cw');
+    myClick.style.backgroundColor = "grey";
+}
+function cwReturnColor(){
+    let myClick = document.getElementById('cw');
+    myClick.style.backgroundColor = 'black';
+}
+function leftChangeColor() {
+    let myClick = document.getElementById('left');
+    myClick.style.backgroundColor = "grey";
+}
+function leftReturnColor(){
+    let myClick = document.getElementById('left');
+    myClick.style.backgroundColor = 'black';
+}
+function rightChangeColor() {
+    let myClick = document.getElementById('right');
+    myClick.style.backgroundColor = "grey";
+}
+function rightReturnColor(){
+    let myClick = document.getElementById('right');
+    myClick.style.backgroundColor = 'black';
 }
