@@ -36,8 +36,9 @@ app.initialize = function() //handles intializing our device
  
     app.connect = function() //create our app.connect function, connects our device
     {
-        console.log('Attempting to connect to bluetooth module') //console logs that we are attempting to connect to bluetooth
- 
+        console.log('Attempting to connect to bluetooth module'); //console logs that we are attempting to connect to bluetooth
+        document.getElementById('disconnect').innerHTML = "Disconnect";
+        
         evothings.easyble.startScan(scanSuccess, scanFailure, {SERVICE_UUIDS:  [app.SERVICE_UUID]}, {allowDuplicates: false});
         //evothings specific command, we call scanSuccess,ScanFailure, and our bluetooth UUID. No duplicates
         //evothings specific command, startScan, starts scanning for devices
@@ -79,6 +80,7 @@ function connectFailure()
  
 app.disconnect = function(errorMessage)
 {
+    
     if(errorMessage) //if errormessage
     {
         console.log(errorMessage); //in console print the error message
@@ -88,6 +90,9 @@ app.disconnect = function(errorMessage)
  
     evothings.easyble.stopScan(); //stop scanning devices
     evothings.easyble.closeConnectedDevices(); //close any connected devices
+    if(app.connected == false)
+        console.log("You've successfully disconnected.");
+    document.getElementById('disconnect').innerHTML = "Disconnected";
 }
  
 function serviceSuccess(device)
