@@ -46,7 +46,7 @@ body {
 .title-data-row {
 	display: flex;
 	flex-direction: row;
-	align-items: ;
+	align-items: -webkit-center;
 	width: 90%;
 }
 
