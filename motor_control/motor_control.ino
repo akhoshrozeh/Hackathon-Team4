@@ -1,14 +1,18 @@
+// 9.19.19
+
 #include <Stepper.h>
 #include <Servo.h>
 #include <SoftwareSerial.h>
 
 
-// *** CONSTANTS ***
+// *** CONSTANTS ***   // NOT FINAL
 const byte BIG_SERVO_1_PIN = 9;
 const byte BIG_SERVO_2_PIN; // TO BE CONFIGURED
-const byte SMALL_SERVO_1_PIN = 6; 
-const byte SMALL_SERVO_2_PIN; // TO BE CONFIGURED
- 
+const byte LEFT_CLAW_SERVO_PIN = 6; 
+const byte RIGHT_CLAW_SERVO_PIN; // TO BE CONFIGURED
+
+const int LEFT_PIN_CLOSE = 15;
+const int RIGHT_PIN_CLOSE = 115; 
 const int stepsPerRevolution = 200;  // change this to fit the number of steps per revolution for motor
 const int rolePerMinute = 15;
 #define RX_PIN 0
@@ -20,9 +24,9 @@ Stepper myStepper_1(stepsPerRevolution, 10, 12, 11, 13);
 Stepper myStepper_2(stepsPerRevolution, 2, 4, 3, 5); 
 Servo bigServo_1;
 Servo bigServo_2;
-Servo smallServo_1;
-Servo smallServo_2;
-SoftwareSerial HM10 = SoftwareSerial(0, 1);
+Servo leftClawServo;
+Servo rightClawServo;
+SoftwareSerial HM10 = SoftwareSerial(RX_PIN, TX_PIN);
 
 // *** VARIABLES ***
 int bigServo1Pos = 90;
@@ -44,10 +48,10 @@ void setup() {
 
     // for small servos: closed is l.write(15) and r.write(115)
       // for opening small servos, l increases and right decreases
-    smallServo_1.attach(SMALL_SERVO_1_PIN);
-    smallServo_1.write(90);     // 110 is straight down for right and 20 is straight down for the left
-    smallServo_2.attach(SMALL_SERVO_2_PIN);
-    smallServo_2.write(90);
+    leftClawServo.attach(LEFT_CLAW_SERVO_PIN);
+    leftClawServo.write(15);     // 110 is straight down for right and 20 is straight down for the left
+    rightClawServo.attach(RIGHT_CLAW_SERVO_PIN);
+    rightClawServo.write(115);
 
     
     myStepper_1.setSpeed(rolePerMinute);
@@ -106,19 +110,28 @@ void turnBigServo2Right() {
   
 }
 
-// **SMALL SERVOS**  // THE CLAW
-void openSmallServos() {
-  
-    
+// **SMALL SERVOS**  
+//  These control the opening and closing of the claw
+void openClaw() {
+   leftClawServo.write(LEFT_PIN_CLOSE + 55);
+   rightClawServo.write(RIGHT_PIN_CLOSE - 55);
 }
   
-void closeSmallServos() {
+void closeClaw() {
+  int x = LEFT_PIN_CLOSE + 55;
+  int y = RIGHT_PIN_CLOSE - 55;
   
+  for(int i = 0;i <55;i++){ 
+    leftClawServo.write(x--);
+    rightClawServo.write(y++);
+    delay(15);
+  }
   
 }
 
 
 // Steppers are now going be working synchronized!
+// These control the base
 
 // **STEPPERS**
 void turnSteppersLeft(){
@@ -132,7 +145,7 @@ void turnSteppersRight(){
   }
 
 
-// ***GUIDE FOR INPUT (START/STOP)***
+// ***GUIDE FOR INPUT (START/STOP)***  // NOT FINAL
   // Steppers Left - 1/9 
   // Steppers Right - 2/10
   // Big Servo1 Left - 3/11
@@ -149,14 +162,14 @@ void loop() {
     while(HM10.available() > 0) {
       byte data = HM10.read();
       
-      if(data == 1){
+      if(data == 1){    // BASE STEPPERS LEFT
          while(1){
               if(HM10.read() == 9) break;
               else turnSteppersLeft();
           }
       }
       
-      else if(data == 2){
+      else if(data == 2){  // BASE STEPPERS RIGHT
         while(1){
             if(HM10.read() == 10) break;
             else turnSteppersRight();
@@ -164,7 +177,7 @@ void loop() {
       }
           
           
-      else if(data == 3){
+      else if(data == 3){   // BIG SERVO1 LEFT
          while(1){
             if(HM10.read() == 11) break;
             else turnBigServo1Left();
@@ -173,7 +186,7 @@ void loop() {
 
           
       
-      else if(data == 4){
+      else if(data == 4){     // BIG SERVO1 RIGHT
         while(1){
           if(HM10.read() == 12) break;
           else turnBigServo1Right();
@@ -181,7 +194,7 @@ void loop() {
         }
    
       
-      else if(data == 5){
+      else if(data == 5){   // BIG SERVO2 LEFT
         while(1){
           if(HM10.read() == 13) break;
           else turnBigServo2Left();
@@ -190,7 +203,7 @@ void loop() {
           
           
       
-      else if(data == 6){
+      else if(data == 6){   // BIG SERVO2 RIGHT
         while(1){
           if(HM10.read() == 14) break;
           else turnBigServo2Right();
@@ -199,19 +212,19 @@ void loop() {
           
       
       
-      else if(data == 7){
+      else if(data == 7){   // OPEN CLAW
         while(1){
           if(HM10.read() == 15) break;
-          else openSmallServos();
+          else openClaw();
           }
         }
        
        
       
-      else if(data == 8){
+      else if(data == 8){   // CLOSE CLAW
         while(1){
           if(HM10.read() == 0) break;
-          else closeSmallServos();
+          else closeClaw();
           }
         }
 
